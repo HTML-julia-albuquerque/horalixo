@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Reciclagem - RecolheCert</title>
+    <style>
+        :root {
+            --primary-color: #2E8B57;
+            --secondary-color: #FFD700;
+            --accent-color: #228B22;
+            --light-color: #F5F5F5;
+            --dark-color: #333;
+            --paper-color: #F9F9F9;
+            --blue-recycle: #1E90FF;
+            --green-recycle: #32CD32;
+            --yellow-recycle: #FFD700;
+            --red-recycle: #FF4500;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Nunito", sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-btn {
+            position: absolute;
+            left: 1rem;
+            top: 1.5rem;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .back-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        nav {
+            background-color: var(--accent-color);
+            padding: 1rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .page-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .recycle-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .recycle-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-top: 5px solid;
+        }
+        
+        .recycle-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .recycle-card.blue {
+            border-top-color: var(--blue-recycle);
+        }
+        
+        .recycle-card.green {
+            border-top-color: var(--green-recycle);
+        }
+        
+        .recycle-card.yellow {
+            border-top-color: var(--yellow-recycle);
+        }
+        
+        .recycle-card.red {
+            border-top-color: var(--red-recycle);
+        }
+        
+        .recycle-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .recycle-icon {
+            font-size: 1.8rem;
+        }
+        
+        .recycle-list {
+            list-style-position: inside;
+            margin-top: 1rem;
+        }
+        
+        .recycle-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+        
+        .recycle-process {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: var(--paper-color);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .tips {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .tips h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .tip {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .download-section {
+            text-align: center;
+            background-color: var(--paper-color);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .back-btn {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 1rem;
+                display: inline-flex;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .recycle-types, .process-steps, .tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-btn">← Voltar</a>
+        <h1>RecolheCert</h1>
+        <p>Guia Completo de Reciclagem</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#tipos">Tipos de Resíduos</a></li>
+            <li><a href="#processo">Processo</a></li>
+            <li><a href="#dicas">Dicas</a></li>
+            <li><a href="#download">Materiais</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2 class="page-title">Guia de Reciclagem</h2>
+        
+        <p class="intro">Aprenda a separar corretamente seus resíduos e contribua para uma Petrópolis mais limpa e sustentável. Este guia completo vai ajudar você a reciclar de forma eficiente.</p>
+        
+        <section id="tipos">
+            <h2 class="page-title">Tipos de Resíduos</h2>
+            <div class="recycle-types">
+                <div class="recycle-card blue">
+                    <h3><span class="recycle-icon">📄</span> Papel</h3>
+                    <p>Materiais de papel que podem ser reciclados:</p>
+                    <ul class="recycle-list">
+                        <li>Jornais e revistas</li>
+                        <li>Caixas de papelão</li>
+                        <li>Folhas de papel</li>
+                        <li>Envelopes</li>
+                        <li>Papel de embrulho</li>
+                    </ul>
+                    <p class="note"><strong>Não recicle:</strong> Papel sujo, papel higiênico, papel carbono ou papel plastificado.</p>
+                </div>
+                
+                <div class="recycle-card yellow">
+                    <h3><span class="recycle-icon">📦</span> Plástico</h3>
+                    <p>Materiais plásticos que podem ser reciclados:</p>
+                    <ul class="recycle-list">
+                        <li>Garrafas PET</li>
+                        <li>Embalagens de produtos de limpeza</li>
+                        <li>Sacos e sacolas</li>
+                        <li>Copos e pratos descartáveis</li>
+                        <li>Utensílios plásticos</li>
+                    </ul>
+                    <p class="note"><strong>Não recicle:</strong> Plásticos sujos, esponjas de cozinha ou cabos de panela.</p>
+                </div>
+                
+                <div class="recycle-card green">
+                    <h3><span class="recycle-icon">🍶</span> Vidro</h3>
+                    <p>Materiais de vidro que podem ser reciclados:</p>
+                    <ul class="recycle-list">
+                        <li>Garrafas de bebidas</li>
+                        <li>Potes de alimentos</li>
+                        <li>Frascos de produtos</li>
+                        <li>Vidros de janelas (em locais específicos)</li>
+                    </ul>
+                    <p class="note"><strong>Não recicle:</strong> Lâmpadas, espelhos, vidros temperados, cerâmicas ou porcelanas.</p>
+                </div>
+                
+                <div class="recycle-card red">
+                    <h3><span class="recycle-icon">🥫</span> Metal</h3>
+                    <p>Materiais metálicos que podem ser reciclados:</p>
+                    <ul class="recycle-list">
+                        <li>Latas de alumínio</li>
+                        <li>Latas de aço</li>
+                        <li>Tampas de metal</li>
+                        <li>Panelas sem cabos</li>
+                        <li>Objetos de cobre</li>
+                    </ul>
+                    <p class="note"><strong>Não recicle:</strong> Clipes, grampos, esponjas de aço, latas com resíduos tóxicos.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="processo" class="recycle-process">
+            <h2 class="page-title">Como Reciclar Corretamente</h2>
+            <p>Seguir o processo correto de reciclagem é essencial para garantir que os materiais sejam realmente reaproveitados.</p>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Limpeza</h3>
+                    <p>Lave bem as embalagens para remover resíduos de alimentos ou produtos.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Separação</h3>
+                    <p>Separe os materiais por tipo: papel, plástico, vidro e metal.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Redução de Volume</h3>
+                    <p>Amasse latas e garrafas, dobre papéis e caixas para economizar espaço.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Descarte</h3>
+                    <p>Coloque os materiais nos coletores adequados ou agende a coleta pelo RecolheCert.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="dicas" class="tips">
+            <h2>Dicas de Reciclagem em Petrópolis</h2>
+            <div class="tips-grid">
+                <div class="tip">
+                    <h3>📍 Pontos de Coleta</h3>
+                    <p>Conheça os ecopontos da sua região. Em Petrópolis, existem mais de 20 pontos de entrega voluntária.</p>
+                </div>
+                
+                <div class="tip">
+                    <h3>🕒 Horários de Coleta</h3>
+                    <p>Verifique os dias e horários de coleta seletiva no seu bairro através do aplicativo RecolheCert.</p>
+                </div>
+                
+                <div class="tip">
+                    <h3>♻️ Resíduos Especiais</h3>
+                    <p>Pilhas, baterias, lâmpadas e eletrônicos devem ser entregues em pontos específicos.</p>
+                </div>
+                
+                <div class="tip">
+                    <h3>🌱 Compostagem</h3>
+                    <p>Restos de alimentos podem ser compostados em casa, reduzindo o lixo orgânico.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="download" class="download-section">
+            <h2 class="page-title">Materiais para Download</h2>
+            <p>Baixe nossos guias completos em PDF para consulta offline</p>
+            <a href="#" class="btn">Guia de Reciclagem (PDF)</a>
+            <a href="#" class="btn">Mapa de Ecopontos em Petrópolis</a>
+            <a href="#" class="btn">Calendário de Coleta Seletiva</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>RecolheCert &copy; 2023 - Todos os direitos reservados</p>
+        <p>Desenvolvido para os moradores de Petrópolis</p>
+        <p>Entre em contato: contato@recolhecert.com.br | (24) 1234-5678</p>
+    </footer>
+
+</body>
+</html>
